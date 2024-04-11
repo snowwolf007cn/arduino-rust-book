@@ -4,8 +4,8 @@ on:
   push:
     paths:
       - '.github/workflows/deploy-embedded-rust-arduino.yml'
-      - 'embedded/rust/arduino/src/**'
-      - 'embedded/rust/arduino/book.toml'
+      - 'src/**'
+      - 'book.toml'
 
 jobs:
   build:
