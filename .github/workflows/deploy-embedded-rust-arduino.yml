@@ -48,4 +48,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          page_url: "/embedded/rust/arduino"
+          page_url: "embedded/rust/arduino"
