@@ -1,0 +1,6 @@
+[book]
+authors = ["Mike Zhang Zhi"]
+language = "zh_cn"
+multilingual = false
+src = "src"
+title = "使用Rust进行Arduino开发"
