@@ -28,14 +28,13 @@ jobs:
         run: |
           cd embedded/rust/arduino
           mdbook build
-          ls .
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: 'embedded/rust/arduino/book'
+          path: 'book'
   deploy:
     name: deploy to pages
     needs: build
