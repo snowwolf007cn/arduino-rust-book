@@ -39,9 +39,6 @@ jobs:
   deploy:
     name: deploy to pages
     needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}/embedded/rust/arduino
     runs-on: ubuntu-latest
     permissions:
       pages: write  # To push to a GitHub Pages site
