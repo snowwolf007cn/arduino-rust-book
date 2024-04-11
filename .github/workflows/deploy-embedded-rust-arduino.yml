@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/deploy-embedded-rust-arduino.yml'
-      - 'embedded/rust/arduino'
+      - 'embedded/rust/arduino/*'
 
 jobs:
   build:
