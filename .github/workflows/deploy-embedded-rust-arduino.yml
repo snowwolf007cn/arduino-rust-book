@@ -26,7 +26,6 @@ jobs:
           echo `pwd`/mdbook >> $GITHUB_PATH
       - name: Build Book
         run: |
-          cd embedded/rust/arduino
           mdbook build
       - name: Setup Pages
         uses: actions/configure-pages@v4
