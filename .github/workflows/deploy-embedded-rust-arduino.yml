@@ -1,5 +1,5 @@
 name: deploy-embedded-rust-arduino
-run-name: ${{ github.author }} editted the book
+run-name: ${{ github.actor }} editted the book
 on:
   push:
     paths:
