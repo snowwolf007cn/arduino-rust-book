@@ -41,6 +41,9 @@ jobs:
     permissions:
       pages: write  # To push to a GitHub Pages site
       id-token: write # To update the deployment status
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
