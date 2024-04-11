@@ -37,6 +37,7 @@ jobs:
           path: 'embedded/rust/arduino/book'
   deploy:
     name: deploy to pages
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       pages: write  # To push to a GitHub Pages site
