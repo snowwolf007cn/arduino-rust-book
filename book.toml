@@ -7,3 +7,9 @@ title = "Arduino Uno Rust开发手册"
 
 [rust]
 edition="2021"
+
+[output.html.playground]
+runnable = false
+
+[preprocessor.image-size]
+command = "mdbook-image-size"
