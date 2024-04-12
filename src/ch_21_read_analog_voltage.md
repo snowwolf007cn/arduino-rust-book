@@ -50,7 +50,7 @@ let voltage = (sensor_value as f32) * 5.0 / 1023.0;
 ```rust
 ufmt::uwriteln!(&mut serial, "{}",uFmt_f32::Two(voltage_write)).unwrap_infallible();
 ```
-注意：此处需要在Cargo.toml中所有profile的配置中加入```overflow-check=false```。否则，编译链接avr-gcc时会报错。
+注意：此处需要在Cargo.toml中所有profile的配置中加入```overflow-check=false```。否则，编译链接avr-gcc时会报错。这个问题可以参见github上的这个issue的相关讨论：[-Zbuild-std + lto="fat" = undefined reference to core::panicking::panic](https://github.com/rust-lang/compiler-builtins/issues/347)
 
 编译并运行示例
 ```shell
