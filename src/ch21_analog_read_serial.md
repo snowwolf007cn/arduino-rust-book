@@ -89,7 +89,6 @@ src/main.js
 #![no_std]
 #![no_main]
 
-
 use arduino_hal::prelude::*;
 use panic_halt as _;
 
