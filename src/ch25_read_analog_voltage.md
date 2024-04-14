@@ -88,7 +88,7 @@ avrdude done.  Thank you.
 src/main.rs
 ```rust
 /*!
- * Show readouts of A0 ADC channels.
+ * Read readouts of A0 ADC channels and convert it to voltage.
  *
  * This example shows you how to read an analog input on analog pin 0, 
  * convert the values from analogRead() into voltage, and print it out to the serial monitor.
