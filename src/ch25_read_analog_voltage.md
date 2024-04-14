@@ -1,16 +1,13 @@
 # 读取模拟电压
-
 读取模拟输入并将电压打印到串行监视器
 
 此示例向您展示如何读取模拟引脚 0 上的模拟输入，将值转换为电压，并将其打印到终端或者VS Code的串行监视器。
 
 ## 硬件要求
-
 - Arduino Board
 - 10k ohm potentiometer
 
 ## 电路
-
 将电位计的三根线连接到电路板上。 第一个从电位计的一个外部引脚接地。 第二个从电位计的另一个外部引脚电压变为 5 伏。 第三个从电位计的中间引脚连接到模拟输入 0。
 
 通过转动电位计的轴，可以改变连接到电位计中心销的游标两侧的电阻值。 这会改变中心引脚的电压。 当中心与连接5伏的一侧之间的电阻接近于零（而另一侧的电阻接近10千欧）时，中心引脚的电压接近5伏。 当电阻反向时，中心引脚的电压接近 0 伏或接地。 该电压是您作为输入读取的模拟电压。
@@ -34,7 +31,7 @@ let mut serial = arduino_hal::default_serial!(dp, pins, 57600);
 ```rust
 let mut adc = arduino_hal::Adc::new(dp.ADC, Default::default());
 ```
-获取A0通道并设置其输出数据
+获取A0引脚并设置为数据输入
 ```rust
 let a0 = pins.a0.into_analog_input(&mut adc);
 ```
@@ -48,7 +45,7 @@ let voltage = (sensor_value as f32) * 5.0 / 1023.0;
 ```
 最后，您需要将此信息打印到串行监视器：
 ```rust
-ufmt::uwriteln!(&mut serial, "{}",uFmt_f32::Two(voltage_write)).unwrap_infallible();
+ufmt::uwriteln!(&mut serial, "{}",uFmt_f32::Two(voltage)).unwrap_infallible();
 ```
 注意：此处需要在Cargo.toml中所有profile的配置中加入```overflow-check=false```。否则，编译链接avr-gcc时会报错。这个问题可以参见github上的这个issue的相关讨论：[-Zbuild-std + lto="fat" = undefined reference to core::panicking::panic](https://github.com/rust-lang/compiler-builtins/issues/347)
 
@@ -118,7 +115,7 @@ fn main() -> ! {
 
         let voltage = (sensor_value as f32) * 5.0 / 1023.0;
 
-        ufmt::uwriteln!(&mut serial, "{}",uFmt_f32::Two(voltage_write)).unwrap_infallible();
+        ufmt::uwriteln!(&mut serial, "{}",uFmt_f32::Two(voltage)).unwrap_infallible();
 
         arduino_hal::delay_ms(1000);
     }
