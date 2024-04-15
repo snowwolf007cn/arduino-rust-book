@@ -18,11 +18,6 @@
 ![读取模拟电压](images/read_analog_voltage.jpg "读取模拟电压" =400x)
 
 ## 代码
-在下面的程序中，您要做的第一件事是在配置文件中，开始在您的板和计算机之间以每秒 57600 位数据的速度进行串行通信，修改.cargo/cargo.toml中[targe.'cfg(target_arch = "avr")']下的runner配置
-```toml
-[target.'cfg(target_arch = "avr")']
-runner = "ravedude uno -cb 57600 -P /dev/tty.usbmodem14101"
-```
 创建串口连接
 ```rust
 let mut serial = arduino_hal::default_serial!(dp, pins, 57600);

@@ -57,7 +57,12 @@ cargo +stable install ravedude
 cargo generate --git https://github.com/Rahix/avr-hal-template.git
 ```
 ## 运行
-将您的Arduino连接到开发电脑上，打开生成的项目中的src/main.rs文件，输入下列代码：
+将您的Arduino连接到开发电脑上，修改项目配置文件，以在您的板和计算机之间以每秒 57600 位数据的速度进行串行通信，修改.cargo/cargo.toml中[targe.'cfg(target_arch = "avr")']下的runner配置
+```toml
+[target.'cfg(target_arch = "avr")']
+runner = "ravedude uno -cb 57600 -P /dev/tty.usbmodem14101"
+```
+打开生成的项目中的src/main.rs文件，输入下列代码：
 ```rust
 /*!
  * Toggle an LED on and off every second.

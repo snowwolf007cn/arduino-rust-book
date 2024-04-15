@@ -32,11 +32,6 @@
 如果您想用此草图点亮外部 LED，则需要构建此电路，将电阻器的一端连接到非内置LED对应的数字引脚。 将 LED 的长腿（正极腿，称为阳极）连接到电阻器的另一端。 将 LED 的短脚（负脚，称为阴极）连接到 GND。 与 LED 串联的电阻值可以是与 220 欧姆不同的值； 当电阻值高达 1K 欧姆时，LED 也会亮起。
 
 ## 代码
-在下面的程序中，您要做的第一件事是在配置文件中，开始在您的板和计算机之间以每秒 57600 位数据的速度进行串行通信，修改.cargo/cargo.toml中[targe.'cfg(target_arch = "avr")']下的runner配置
-```toml
-[target.'cfg(target_arch = "avr")']
-runner = "ravedude uno -cb 57600 -P /dev/tty.usbmodem14101"
-```
 获取led引脚并设置为数据输出
 ```rust
 let mut led = pins.d13.into_output();
