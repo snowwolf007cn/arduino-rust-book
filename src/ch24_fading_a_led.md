@@ -55,34 +55,6 @@ let mut pwm_led = pins.d9.into_output().into_pwm(&Timer1Pwm::new(dp.TC1, Prescal
 	cargo build
 	cargo run
 	```
-	应用程序成功写入板卡后显示
-	```
-   	Finished `dev` profile [optimized + debuginfo] target(s) in 0.10s
-     Running `ravedude uno -cb 57600 -P /dev/tty.usbmodem14101 target/avr-atmega328p/debug/fadingaled.elf`
-       Board Arduino Uno
-	 Programming target/avr-atmega328p/debug/fadingaled.elf => /dev/tty.usbmodem14101
-	avrdude: AVR device initialized and ready to accept instructions
-	avrdude: device signature = 0x1e950f (probably m328p)
-	avrdude: erasing chip
-
-	avrdude: processing -U flash:w:target/avr-atmega328p/debug/fadingaled.elf:e
-	avrdude: reading input file target/avr-atmega328p/debug/fadingaled.elf for flash
-         with 440 bytes in 1 section within [0, 0x1b7]
-         using 4 pages and 72 pad bytes
-	avrdude: writing 440 bytes flash ...
-	Writing | ################################################## | 100% 0.10 s 
-	avrdude: 440 bytes of flash written
-	avrdude: verifying flash memory against target/avr-atmega328p/debug/fadingaled.elf
-	Reading | ################################################## | 100% 0.07 s 
-	avrdude: 440 bytes of flash verified
-
-	avrdude done.  Thank you.
-
-	  Programmed target/avr-atmega328p/debug/fadingaled.elf
-	     Console /dev/tty.usbmodem14101 at 57600 baud
-             CTRL+C to exit.
-	```
-
 	完整代码如下：
 
 	src/main.rs
@@ -141,35 +113,8 @@ let mut pwm_led = pins.d9.into_output().into_pwm(&Timer1Pwm::new(dp.TC1, Prescal
 	cargo build
 	cargo run
 	```
-	应用程序成功写入板卡后显示
-	```
-	   Finished `dev` profile [optimized + debuginfo] target(s) in 0.18s
-     Running `ravedude uno -cb 57600 -P /dev/tty.usbmodem14101 target/avr-atmega328p/debug/fadingaledembeddedhal.elf`
-       Board Arduino Uno
-	 Programming target/avr-atmega328p/debug/fadingaledembeddedhal.elf => /dev/tty.usbmodem14101
-	avrdude: AVR device initialized and ready to accept instructions
-	avrdude: device signature = 0x1e950f (probably m328p)
-	avrdude: erasing chip
-
-	avrdude: processing -U flash:w:target/avr-atmega328p/debug/fadingaledembeddedhal.elf:e
-	avrdude: reading input file target/avr-atmega328p/debug/fadingaledembeddedhal.elf for flash
-         with 622 bytes in 1 section within [0, 0x26d]
-         using 5 pages and 18 pad bytes
-	avrdude: writing 622 bytes flash ...
-	Writing | ################################################## | 100% 0.12 s 
-	avrdude: 622 bytes of flash written
-	avrdude: verifying flash memory against target/avr-atmega328p/debug/fadingaledembeddedhal.elf
-	Reading | ################################################## | 100% 0.08 s 
-	avrdude: 622 bytes of flash verified
-
-	avrdude done.  Thank you.
-
-	  Programmed target/avr-atmega328p/debug/fadingaledembeddedhal.elf
-	     Console /dev/tty.usbmodem14101 at 57600 baud
-             CTRL+C to exit.
-	```
 	完整代码如下：
-
+	
 	src/main.rs
 	```rust
 	/*!

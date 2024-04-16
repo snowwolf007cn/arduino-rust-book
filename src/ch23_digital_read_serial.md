@@ -42,34 +42,6 @@ ufmt::uwriteln!(&mut serial, "{}",sensor_value).unwrap_infallible();
 cargo build
 cargo run
 ```
-应用程序成功写入板卡后显示
-```
-   Compiling digitalreadserial v0.1.0 (/Users/zhangzhi/workspace/rust/arduino/tutorial/digitalreadserial)
-    Finished `dev` profile [optimized + debuginfo] target(s) in 0.68s
-     Running `ravedude uno -cb 57600 -P /dev/tty.usbmodem14101 target/avr-atmega328p/debug/digitalreadserial.elf`
-       Board Arduino Uno
- Programming target/avr-atmega328p/debug/digitalreadserial.elf => /dev/tty.usbmodem14101
-avrdude: AVR device initialized and ready to accept instructions
-avrdude: device signature = 0x1e950f (probably m328p)
-avrdude: erasing chip
-
-avrdude: processing -U flash:w:target/avr-atmega328p/debug/digitalreadserial.elf:e
-avrdude: reading input file target/avr-atmega328p/debug/digitalreadserial.elf for flash
-         with 404 bytes in 1 section within [0, 0x193]
-         using 4 pages and 108 pad bytes
-avrdude: writing 404 bytes flash ...
-Writing | ################################################## | 100% 0.10 s 
-avrdude: 404 bytes of flash written
-avrdude: verifying flash memory against target/avr-atmega328p/debug/digitalreadserial.elf
-Reading | ################################################## | 100% 0.07 s 
-avrdude: 404 bytes of flash verified
-
-avrdude done.  Thank you.
-
-  Programmed target/avr-atmega328p/debug/digitalreadserial.elf
-     Console /dev/tty.usbmodem14101 at 57600 baud
-             CTRL+C to exit.
-```
 如果您此时尚未退出或者退出后通过VS Code的串行监视器连接到板卡串口，如果开关打开，您将看到一串“0”；如果开关关闭，您将看到“1”。
 
 完整代码如下：

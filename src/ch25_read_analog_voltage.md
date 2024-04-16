@@ -49,35 +49,6 @@ ufmt::uwriteln!(&mut serial, "{}",uFmt_f32::Two(voltage)).unwrap_infallible();
 cargo build
 cargo run
 ```
-应用程序成功写入板卡后显示
-```
-    Finished `dev` profile [optimized + debuginfo] target(s) in 0.14s
-     Running `ravedude uno -cb 57600 -P /dev/tty.usbmodem14101 target/avr-atmega328p/debug/digitalreadserial.elf`
-       Board Arduino Uno
- Programming target/avr-atmega328p/debug/digitalreadserial.elf => /dev/tty.usbmodem14101
-avrdude: AVR device initialized and ready to accept instructions
-avrdude: device signature = 0x1e950f (probably m328p)
-avrdude: erasing chip
-
-avrdude: processing -U flash:w:target/avr-atmega328p/debug/digitalreadserial.elf:e
-avrdude: reading input file target/avr-atmega328p/debug/digitalreadserial.elf for flash
-         with 3902 bytes in 1 section within [0, 0xf3d]
-         using 31 pages and 66 pad bytes
-avrdude: writing 3902 bytes flash ...
-Writing | ################################################## | 100% 0.65 s 
-avrdude: 3902 bytes of flash written
-avrdude: verifying flash memory against target/avr-atmega328p/debug/digitalreadserial.elf
-Reading | ################################################## | 100% 0.51 s 
-avrdude: 3902 bytes of flash verified
-
-avrdude done.  Thank you.
-
-  Programmed target/avr-atmega328p/debug/digitalreadserial.elf
-     Console /dev/tty.usbmodem14101 at 57600 baud
-             CTRL+C to exit.
-```
-如果您此时尚未退出或者退出后通过VS Code的串行监视器连接到板卡串口，您应该会看到一系列范围从 0.00 - 5.00 的稳定数字。 当您转动电位器时，数值会发生变化，与进入引脚 A0 的电压相对应。
-
 完整代码如下：
 
 src/main.rs

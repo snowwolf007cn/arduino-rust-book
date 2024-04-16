@@ -43,33 +43,6 @@ ufmt::uwriteln!(&mut serial, "{}",sensor_value).unwrap_infallible();
 cargo build
 cargo run
 ```
-应用程序成功写入板卡后显示
-```
-    Finished `dev` profile [optimized + debuginfo] target(s) in 0.10s
-     Running `ravedude uno -cb 57600 -P /dev/tty.usbmodem14101 target/avr-atmega328p/debug/analogreadserial.elf`
-       Board Arduino Uno
- Programming target/avr-atmega328p/debug/analogreadserial.elf => /dev/tty.usbmodem14101
-avrdude: AVR device initialized and ready to accept instructions
-avrdude: device signature = 0x1e950f (probably m328p)
-avrdude: erasing chip
-
-avrdude: processing -U flash:w:target/avr-atmega328p/debug/analogreadserial.elf:e
-avrdude: reading input file target/avr-atmega328p/debug/analogreadserial.elf for flash
-         with 732 bytes in 1 section within [0, 0x2db]
-         using 6 pages and 36 pad bytes
-avrdude: writing 732 bytes flash ...
-Writing | ################################################## | 100% 0.14 s 
-avrdude: 732 bytes of flash written
-avrdude: verifying flash memory against target/avr-atmega328p/debug/analogreadserial.elf
-Reading | ################################################## | 100% 0.10 s 
-avrdude: 732 bytes of flash verified
-
-avrdude done.  Thank you.
-
-  Programmed target/avr-atmega328p/debug/analogreadserial.elf
-     Console /dev/tty.usbmodem14101 at 57600 baud
-             CTRL+C to exit.
-```
 如果您此时尚未退出或者退出后通过VS Code的串行监视器连接到板卡串口，您应该会看到稳定的 范围从 0 到 1023 的数字流，与旋钮的位置相关。 当您转动电位器时，这些数字几乎会立即响应。
 
 完整代码如下：

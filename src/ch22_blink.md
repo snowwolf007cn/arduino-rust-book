@@ -45,34 +45,6 @@ led.toggle();
 cargo build
 cargo run
 ```
-应用程序成功写入板卡后显示
-```
-   Compiling blink v0.1.0 (/Users/zhangzhi/workspace/rust/arduino/tutorial/blink)
-    Finished `dev` profile [optimized + debuginfo] target(s) in 0.67s
-     Running `ravedude uno -cb 57600 -P /dev/tty.usbmodem14101 target/avr-atmega328p/debug/blink.elf`
-       Board Arduino Uno
- Programming target/avr-atmega328p/debug/blink.elf => /dev/tty.usbmodem14101
-avrdude: AVR device initialized and ready to accept instructions
-avrdude: device signature = 0x1e950f (probably m328p)
-avrdude: erasing chip
-
-avrdude: processing -U flash:w:target/avr-atmega328p/debug/blink.elf:e
-avrdude: reading input file target/avr-atmega328p/debug/blink.elf for flash
-         with 262 bytes in 1 section within [0, 0x105]
-         using 3 pages and 122 pad bytes
-avrdude: writing 262 bytes flash ...
-Writing | ################################################## | 100% 0.08 s 
-avrdude: 262 bytes of flash written
-avrdude: verifying flash memory against target/avr-atmega328p/debug/blink.elf
-Reading | ################################################## | 100% 0.05 s 
-avrdude: 262 bytes of flash verified
-
-avrdude done.  Thank you.
-
-  Programmed target/avr-atmega328p/debug/blink.elf
-     Console /dev/tty.usbmodem14101 at 57600 baud
-             CTRL+C to exit.
-```
 您希望有足够的时间让人们看到更改，因此，delay_ms() 命令告诉主板在 1000 毫秒（即一秒）内不执行任何操作。 当您使用delay_ms()命令时，在这段时间内不会发生任何其他事情。 了解基本示例后，请查看 [无延迟闪烁](./ch31_blink_without_delay.md) 示例以了解如何在执行其他操作时创建延迟。
 
 了解此示例后，请查看 [读取串口数字信号](./ch23_digital_read_serial.md)示例以了解如何读取连接到电路板的开关。
