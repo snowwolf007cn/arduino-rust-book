@@ -1,4 +1,4 @@
-# 淡化LED
+# 渐显/渐隐LED
 演示如何使用模拟输出来淡化 LED。
 
 此示例演示了如何使用 AnalogWrite() 函数使 LED 淡入淡出。 AnalogWrite 使用脉冲宽度调制 ([PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output/))，以不同的开和关比率快速打开和关闭数字引脚，以产生淡入淡出效果。
@@ -15,8 +15,8 @@
 
 在 Arduino Uno 上，可以在数字I/O引脚 3、5、6、9、10 和 11 上进行 PWM 输出。
 
-### 电路实例
-![淡化LED](images/fading_a_led.jpg "淡化LED" =400x)
+### 电路图
+![渐显/渐隐LED](images/led_connection.png "渐显/渐隐LED" =400x)
 
 ## 代码
 我们使用simple_pwm模块中的timer来创建脉冲。simple_pwd为我们提供了3个脉冲时钟对应不同的PWM时钟以对应不同的数字I/O引脚。
