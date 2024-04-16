@@ -12,3 +12,4 @@
   - [读取模拟电压](./ch25_read_analog_voltage.md)
 - [数字](./ch3_digital.md)
   - [无延迟闪烁](./ch31_blink_without_delay.md)
+  - [如何对按钮进行连线和编程](./ch32_how_to_wire_and_program_a_button.md)
