@@ -3,7 +3,7 @@ authors = ["Mike Zhang Zhi"]
 language = "zh_cn"
 multilingual = false
 src = "src"
-title = "Arduino Uno Rust开发手册"
+title = "Arduino Uno Rust开发实战"
 
 [rust]
 edition="2021"
