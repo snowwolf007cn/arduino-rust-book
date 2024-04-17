@@ -5,9 +5,9 @@
 
 # 程序示例
 - [基础](./ch2_basic.md)
-  - [读取串口模拟信号](./ch21_analog_read_serial.md)
+  - [模拟读取串行](./ch21_analog_read_serial.md)
   - [闪烁](./ch22_blink.md)
-  - [读取串口数字信号](./ch23_digital_read_serial.md)
+  - [数字读取串行](./ch23_digital_read_serial.md)
   - [渐显/渐隐LED](./ch24_fading_a_led.md)
   - [读取模拟电压](./ch25_read_analog_voltage.md)
   - [编写millis()函数](./ch26_write_millis_function.md)
@@ -15,3 +15,4 @@
   - [无延迟闪烁](./ch31_blink_without_delay.md)
   - [如何对按钮进行连线和编程](./ch32_how_to_wire_and_program_a_button.md)
   - [按钮去抖](./ch33_debounce_on_a_pushbutton.md)
+  - [输入串行上拉](./ch34_input_pullup_serial.md)
