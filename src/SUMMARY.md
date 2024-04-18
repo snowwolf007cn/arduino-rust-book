@@ -16,3 +16,4 @@
   - [如何对按钮进行连线和编程](./ch32_how_to_wire_and_program_a_button.md)
   - [按钮去抖](./ch33_debounce_on_a_pushbutton.md)
   - [输入串行上拉](./ch34_input_pullup_serial.md)
+  - [按钮的状态变化检测（边缘检测）](./ch35_state_change_detection.md)
