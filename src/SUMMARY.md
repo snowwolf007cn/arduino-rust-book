@@ -19,3 +19,4 @@
   - [按钮的状态变化检测（边缘检测）](./ch35_state_change_detection.md)
 - [模拟](./ch4_analog.md)
   - [模拟输入，串行输出](./ch41_analog_in_out_serial.md)
+  - [模拟输入](./ch42_analog_input.md)
