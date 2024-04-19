@@ -17,3 +17,5 @@
   - [按钮去抖](./ch33_debounce_on_a_pushbutton.md)
   - [输入串行上拉](./ch34_input_pullup_serial.md)
   - [按钮的状态变化检测（边缘检测）](./ch35_state_change_detection.md)
+- [模拟](./ch4_analog.md)
+  - [模拟输入，串行输出](./ch41_analog_in_out_serial.md)
