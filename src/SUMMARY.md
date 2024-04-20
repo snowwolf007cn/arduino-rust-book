@@ -20,3 +20,5 @@
 - [模拟](./ch4_analog.md)
   - [模拟输入，串行输出](./ch41_analog_in_out_serial.md)
   - [模拟输入](./ch42_analog_input.md)
+- [通信](./ch5_communication.md)
+  - [创建LED调光器](./ch51_create_a_led_dimmer.md)
