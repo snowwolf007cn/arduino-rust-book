@@ -46,7 +46,7 @@ ufmt::uwriteln!(&mut serial, "{}", is_high).unwrap_infallible();
 cargo build
 cargo run
 ```
-如果您此时尚未退出或者退出后通过VS Code的串行监视器连接到板卡串口，如果按钮按下，您将看到一串false，如果按钮松开，您将看到true流。 当开关处于高电平时，引脚 13 上的 LED 将亮起，而当开关处于低电平时，引脚 13 上的 LED 将熄灭。
+通过VS Code的串行监视器连接到板卡串口，如果按钮按下，您将看到一串false，如果按钮松开，您将看到true流。 当开关处于高电平时，引脚 13 上的 LED 将亮起，而当开关处于低电平时，引脚 13 上的 LED 将熄灭。
 
 完整代码如下：
 

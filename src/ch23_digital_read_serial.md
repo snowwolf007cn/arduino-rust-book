@@ -42,7 +42,7 @@ ufmt::uwriteln!(&mut serial, "{}",sensor_value).unwrap_infallible();
 cargo build
 cargo run
 ```
-如果您此时尚未退出或者退出后通过VS Code的串行监视器连接到板卡串口，如果开关打开，您将看到一串“0”；如果开关关闭，您将看到“1”。
+通过VS Code的串行监视器连接到板卡串口，如果开关打开，您将看到一串“0”；如果开关关闭，您将看到“1”。
 
 完整代码如下：
 src/main.rs
