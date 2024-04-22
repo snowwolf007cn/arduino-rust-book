@@ -8,7 +8,7 @@
 - 共阴极RGB LED
 - 3个220欧姆电阻
 - 连接线
-- breadboard
+- 面包板
 
 ## 电路
 您需要四根电线来构成上面的电路。一根电线将电路板的地线GND（如果是共阳极则需连接到5V电压）连接到RGB LED的最长引脚。您应该转动 LED，使最长的引脚位于右侧第二个引脚上。
@@ -70,3 +70,74 @@ cargo build
 cargo run
 ```
 打开VS Code的串行监视器，输入类似于127,32,64并将换行符设置成LF，你可以看到，LED灯随着输入值的不同而显示不同的颜色。
+
+完整代码如下:
+
+src/main.rs
+```rust
+/*!
+ * Reading a serial ASCII-encoded string.
+ *
+ * This sketch demonstrates the heapless::Vec type as buffer, heapless::Vec::split(), u8::from_str_radix()function.
+ *
+ * It looks for an ASCII string of comma-separated values.
+ *
+ * It parses them into ints, and uses those to fade an RGB LED.
+ */
+#![no_std]
+#![no_main]
+
+use core::{str, u8};
+
+use arduino_hal::{
+    default_serial, pins,
+    prelude::*,
+    simple_pwm::{IntoPwmPin, Prescaler, Timer1Pwm, Timer2Pwm},
+    Peripherals,
+};
+use heapless::Vec;
+use panic_halt as _;
+
+#[arduino_hal::entry]
+fn main() -> ! {
+    let dp = Peripherals::take().unwrap();
+    let pins = pins!(dp);
+    let mut serial = default_serial!(dp, pins, 57600);
+
+    let timer1 = Timer1Pwm::new(dp.TC1, Prescaler::Prescale64);
+    let mut red_pin = pins.d9.into_output().into_pwm(&timer1);
+    red_pin.enable();
+    let mut green_pin = pins.d10.into_output().into_pwm(&timer1);
+    green_pin.enable();
+    let timer2 = Timer2Pwm::new(dp.TC2, Prescaler::Prescale64);
+    let mut blue_pin = pins.d11.into_output().into_pwm(&timer2);
+    blue_pin.enable();
+
+    let mut buffer: Vec<u8, 512> = Vec::new();
+    loop {
+        let b = serial.read_byte();
+
+        if b == b'\n' {
+            let mut iter = buffer.split(|num| *num == b',');
+
+            let red_byte = iter.next().unwrap_or_default();
+            let green_byte = iter.next().unwrap_or_default();
+            let blue_byte = iter.next().unwrap_or_default();
+
+            let red = u8::from_str_radix(str::from_utf8(red_byte).unwrap_or_default(), 10)
+                .unwrap_or_default();
+            let blue = u8::from_str_radix(str::from_utf8(blue_byte).unwrap_or_default(), 10)
+                .unwrap_or_default();
+            let green = u8::from_str_radix(str::from_utf8(green_byte).unwrap_or_default(), 10)
+                .unwrap_or_default();
+            buffer.clear();
+            red_pin.set_duty(red);
+            blue_pin.set_duty(blue);
+            green_pin.set_duty(green);
+            ufmt::uwriteln!(&mut serial, "RGB({},{},{})", red, green, blue).unwrap_infallible();
+        } else {
+            buffer.push(b).unwrap();
+        }
+    }
+}
+```
