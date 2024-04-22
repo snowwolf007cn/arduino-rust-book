@@ -23,3 +23,4 @@
 - [通信](./ch5_communication.md)
   - [创建LED调光器](./ch51_create_a_led_dimmer.md)
   - [读取ASCII字符串](./ch52_read_ascii_string.md)
+  - [具有ASCII编码输出的串行调用和响应（握手）](./ch53_handshaking_with_ascii_encoded_output.md)
