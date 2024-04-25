@@ -61,70 +61,54 @@ cargo run
 src/main.rs
 ```rust
 /*!
- * Blinks a 4 leds in sequence on pins D3 - D6. When an external interrupt on D2/INT0 comes in
- * the sequence is reversed.
+ * Detecting vibration
  * 
- * Note: The use of the either crate requires the deactivation of std to use it in core. See the Cargo.toml 
- * in this directory for details.
+ * If you shake the breadboard with tilt switch sensor on, the LED light on, otherwise the LED will be off.
+ * You don't have to keep the breadboard level.
  */
 #![no_std]
 #![no_main]
 #![feature(abi_avr_interrupt)]
 
-use panic_halt as _;
 use core::sync::atomic::{AtomicBool, Ordering};
-use arduino_hal::port::{mode, Pin};
-use either::*;
 
-static REVERSED: AtomicBool = AtomicBool::new(false);
+use arduino_hal::{delay_ms, entry, pins, Peripherals};
+use avr_device::interrupt;
+use panic_halt as _;
 
-fn is_reversed() -> bool {
-    REVERSED.load(Ordering::SeqCst)
+static STATE: AtomicBool = AtomicBool::new(false);
+
+#[interrupt(atmega328p)]
+fn INT1() {
+    let current = STATE.load(Ordering::SeqCst);
+    if !current {
+        STATE.store(true, Ordering::SeqCst);
+    }
 }
 
-#[avr_device::interrupt(atmega328p)]
-fn INT0() {
-    let current = REVERSED.load(Ordering::SeqCst);
-    REVERSED.store(!current, Ordering::SeqCst);
-}
-
-fn blink_for_range(range: impl Iterator<Item = u16>, leds: &mut [Pin<mode::Output>]) {
-    range.map(|i| i * 100).for_each(|ms| {
-        let iter = if is_reversed() {
-            Left(leds.iter_mut().rev())
-        } else {
-            Right(leds.iter_mut())
-        };
-        iter.for_each(|led| {
-            led.toggle();
-            arduino_hal::delay_ms(ms as u16);
-        })
-    });
-}
-
-#[arduino_hal::entry]
+#[entry]
 fn main() -> ! {
-    let dp = arduino_hal::Peripherals::take().unwrap();
-    let pins = arduino_hal::pins!(dp);
+    let dp = Peripherals::take().unwrap();
+    let pins = pins!(dp);
 
-    // thanks to tsemczyszyn and Rahix: https://github.com/Rahix/avr-hal/issues/240
-    // Configure INT0 for falling edge. 0x03 would be rising edge.
-    dp.EXINT.eicra.modify(|_, w| w.isc0().bits(0x02));
-    // Enable the INT0 interrupt source.
-    dp.EXINT.eimsk.modify(|_, w| w.int0().set_bit());
+    // let tilt = pins.d3.into_floating_input();
+    let mut led = pins.d13.into_output();
 
-    let mut leds: [Pin<mode::Output>; 4] = [
-        pins.d3.into_output().downgrade(),
-        pins.d4.into_output().downgrade(),
-        pins.d5.into_output().downgrade(),
-        pins.d6.into_output().downgrade(),
-    ];
+    dp.EXINT.eicra.write(|w| w.isc1().bits(0x03));
+    dp.EXINT.eimsk.write(|w| w.int1().set_bit());
 
-    unsafe { avr_device::interrupt::enable() };
+    unsafe {
+        interrupt::enable();
+    }
 
     loop {
-        blink_for_range(0..10, &mut leds);
-        blink_for_range((0..10).rev(), &mut leds);
+        if STATE.load(Ordering::SeqCst) {
+            STATE.store(false, Ordering::SeqCst);
+            led.set_high();
+            delay_ms(500);
+        } else {
+            led.set_low();
+        }
     }
 }
 ```
