@@ -29,6 +29,7 @@
 - [传感器](./ch7_sensor.md)
   - [温度报警器](./ch71_temperature_alarm.md)
   - [震动探测](./ch72_detecting_vibration.md)
+  - [感光灯](./ch73_photosensive_light.md)
 - [应用](./ch8_application.md)
   - [交通信号灯](./ch81_traffic_light.md)
   
