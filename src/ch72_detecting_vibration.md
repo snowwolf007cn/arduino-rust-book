@@ -91,7 +91,6 @@ fn main() -> ! {
     let dp = Peripherals::take().unwrap();
     let pins = pins!(dp);
 
-    // let tilt = pins.d3.into_floating_input();
     let mut led = pins.d13.into_output();
 
     dp.EXINT.eicra.write(|w| w.isc1().bits(0x03));
