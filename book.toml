@@ -6,7 +6,10 @@ src = "src"
 title = "Arduino Uno Rust开发实战"
 
 [rust]
-edition="2021"
+edition = "2021"
+
+[output.html]
+mathjax-support = true
 
 [output.html.playground]
 runnable = false
