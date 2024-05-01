@@ -30,6 +30,7 @@
   - [温度报警器](./ch61_temperature_alarm.md)
   - [震动探测](./ch62_detecting_vibration.md)
   - [感光灯](./ch63_photosensive_light.md)
+  - [红外接收管](./ch64_ir_receiver.md)
 - [应用](./ch7_application.md)
   - [交通信号灯](./ch71_traffic_light.md)
   
