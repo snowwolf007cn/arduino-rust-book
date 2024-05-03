@@ -9,7 +9,10 @@ title = "Arduino Uno Rust开发实战"
 edition = "2021"
 
 [output.html]
+default-theme = "rust"
 mathjax-support = true
+git-repository-url = "https://github.com/snowwolf007cn/arduino-rust-book.git"
+git-repository-icon = "fa-github"
 
 [output.html.playground]
 runnable = false
