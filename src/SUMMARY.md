@@ -13,6 +13,7 @@
   - [编写millis()函数](./ch26_write_millis_function.md)
   - [LED灯带](./ch27_range_for_led.md)
   - [控制舵机](./ch28_servo_control.md)
+  - [使用C/C++类库控制舵机](./ch29_servo_control_with_c_lib.md)
 - [数字](./ch3_digital.md)
   - [无延迟闪烁](./ch31_blink_without_delay.md)
   - [如何对按钮进行连线和编程](./ch32_how_to_wire_and_program_a_button.md)
