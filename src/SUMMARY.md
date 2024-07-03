@@ -2,6 +2,7 @@
 
 # 安装
 - [搭建开发环境](./ch1_prepare_dev_environment.md)
+  - [AVR](./ch11_prepare_dev_environment_avr.md)
 
 # 程序示例
 - [基础](./ch2_basic.md)
